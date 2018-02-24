@@ -12,7 +12,7 @@ var ExpenseSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  status: {
+  type: {
     type: [{
       type: String,
       enum: ['living', 'food', 'travel', 'misc']

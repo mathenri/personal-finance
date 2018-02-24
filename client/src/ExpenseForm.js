@@ -3,18 +3,27 @@ import React, { Component } from 'react';
 class ExpenseForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {expenseInputBoxValue: 0};
+    this.state = {
+      expenseInputBoxValue: null,
+      expenseType: 'misc'
+    };
 
-    this.handleExpenseInputBoxChange = this.handleExpenseInputBoxChange.bind(this);
+    this.handleFromChange = this.handleFromChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
-  handleExpenseInputBoxChange(event) {
-    this.setState({expenseInputBoxValue: event.target.value});
+  handleFromChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
   }
 
   handleFormSubmit(event) {
-    alert('The followin value was submitted: ' + this.state.expenseInputBoxValue);
+    alert('Submitting: ' + this.state.expenseInputBoxValue + ', ' + this.state.expenseType);
 
     fetch('http://localhost:4000/expenses', {
           method: 'POST',
@@ -23,8 +32,8 @@ class ExpenseForm extends Component {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          amound: this.state.expenseInputBoxValue,
-          hours: this.state.hours,
+          amount: this.state.expenseInputBoxValue,
+          type: this.state.expenseType,
         })
       });
 
@@ -42,26 +51,51 @@ class ExpenseForm extends Component {
                 className="form-control form-control-lg" 
                 placeholder="Kostnad"
                 value={this.state.expenseInputBoxValue}
-                onChange={this.handleExpenseInputBoxChange} />
+                onChange={this.handleFromChange}
+                name="expenseInputBoxValue" />
             </div>
             <div className="form-check">
-              <input type="radio" className="form-check-input" name="typeRadios" id="foodRadio" 
-                value="food" />
+              <input 
+                type="radio" 
+                className="form-check-input" 
+                name="expenseType" 
+                id="foodRadio" 
+                value="food"
+                checked={this.state.expenseType === 'food'}
+                onChange={this.handleFromChange} />
               <label class="form-check-label" for="foodRadio">Mat</label>
             </div> 
             <div className="form-check">
-              <input type="radio" className="form-check-input" name="typeRadios" id="livingRadio" 
-                value="living" />
+              <input 
+                type="radio" 
+                className="form-check-input" 
+                name="expenseType" 
+                id="livingRadio" 
+                value="living"
+                checked={this.state.expenseType === 'living'}
+                onChange={this.handleFromChange} />
               <label class="form-check-label" for="livingRadio">Boende</label>
             </div> 
             <div className="form-check">
-              <input type="radio" className="form-check-input" name="typeRadios" id="travelRadio" 
-                value="travel" />
+              <input 
+                type="radio" 
+                className="form-check-input" 
+                name="expenseType" 
+                id="travelRadio" 
+                value="travel" 
+                checked={this.state.expenseType === 'travel'}
+                onChange={this.handleFromChange} />
               <label class="form-check-label" for="travelRadio">Resa</label>
             </div> 
             <div className="form-check margin-bottom">
-              <input type="radio" className="form-check-input" name="typeRadios" id="miscRadio" 
-                value="misc" checked />
+              <input 
+                type="radio" 
+                className="form-check-input" 
+                name="expenseType" 
+                id="miscRadio" 
+                value="misc" 
+                checked={this.state.expenseType === 'misc'}
+                onChange={this.handleFromChange} />
               <label class="form-check-label" for="miscRadio">Övrigt</label>
             </div>
             <button type="submit" class="btn btn-success btn-lg">Submit</button> 
