@@ -25,7 +25,7 @@ class ExpenseForm extends Component {
   handleFormSubmit(event) {
     alert('Submitting: ' + this.state.expenseInputBoxValue + ', ' + this.state.expenseType);
 
-    fetch('http://localhost:4000/expenses', {
+    fetch('/api/expenses', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',

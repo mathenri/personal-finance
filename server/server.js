@@ -1,12 +1,13 @@
 var express = require('express'),
   app = express(),
-  port = process.env.PORT || 4000,
+  port = process.env.PORT || 5000,
   mongoose = require('mongoose'),
   Expenses = require('./api/models/model'), //created model loading here
   bodyParser = require('body-parser'),
   winston = require('winston'),
   expressWinston = require('express-winston'),
-  cors = require('cors');
+  cors = require('cors'),
+  path = require('path');
   
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
@@ -31,6 +32,9 @@ app.use(expressWinston.logger({
   meta: false, // log the meta data about the request
   expressFormat: true, // default message format
 }));
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 var routes = require('./api/routes/routes'); //importing route
 routes(app); //register the route
