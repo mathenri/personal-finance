@@ -34,7 +34,7 @@ app.use(expressWinston.logger({
 }));
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../client/build')));
+//app.use(express.static(path.join(__dirname, '../client/build')));
 
 var routes = require('./api/routes/routes'); //importing route
 routes(app); //register the route
