@@ -35,6 +35,7 @@ class ExpenseForm extends Component {
           amount: this.state.expenseInputBoxValue,
           type: this.state.expenseType,
         })
+        .then(response => { return response.json();})
       });
 
     event.preventDefault();
@@ -54,51 +55,53 @@ class ExpenseForm extends Component {
                 onChange={this.handleFromChange}
                 name="expenseInputBoxValue" />
             </div>
-            <div className="form-check">
-              <input 
-                type="radio" 
-                className="form-check-input" 
-                name="expenseType" 
-                id="foodRadio" 
-                value="food"
-                checked={this.state.expenseType === 'food'}
-                onChange={this.handleFromChange} />
-              <label class="form-check-label" for="foodRadio">Mat</label>
-            </div> 
-            <div className="form-check">
-              <input 
-                type="radio" 
-                className="form-check-input" 
-                name="expenseType" 
-                id="livingRadio" 
-                value="living"
-                checked={this.state.expenseType === 'living'}
-                onChange={this.handleFromChange} />
-              <label class="form-check-label" for="livingRadio">Boende</label>
-            </div> 
-            <div className="form-check">
-              <input 
-                type="radio" 
-                className="form-check-input" 
-                name="expenseType" 
-                id="travelRadio" 
-                value="travel" 
-                checked={this.state.expenseType === 'travel'}
-                onChange={this.handleFromChange} />
-              <label class="form-check-label" for="travelRadio">Resa</label>
-            </div> 
-            <div className="form-check margin-bottom">
-              <input 
-                type="radio" 
-                className="form-check-input" 
-                name="expenseType" 
-                id="miscRadio" 
-                value="misc" 
-                checked={this.state.expenseType === 'misc'}
-                onChange={this.handleFromChange} />
-              <label class="form-check-label" for="miscRadio">Övrigt</label>
-            </div>
-            <button type="submit" class="btn btn-success btn-lg">Submit</button> 
+            <fieldset className="form-group">
+              <div className="form-check form-control-lg">
+                <input 
+                  type="radio" 
+                  className="form-check-input" 
+                  name="expenseType" 
+                  id="foodRadio" 
+                  value="food"
+                  checked={this.state.expenseType === 'food'}
+                  onChange={this.handleFromChange} />
+                <label class="form-check-label" for="foodRadio">Mat</label>
+              </div> 
+              <div className="form-check form-control-lg">
+                <input 
+                  type="radio" 
+                  className="form-check-input" 
+                  name="expenseType" 
+                  id="livingRadio" 
+                  value="living"
+                  checked={this.state.expenseType === 'living'}
+                  onChange={this.handleFromChange} />
+                <label class="form-check-label" for="livingRadio">Boende</label>
+              </div> 
+              <div className="form-check form-control-lg">
+                <input 
+                  type="radio" 
+                  className="form-check-input" 
+                  name="expenseType" 
+                  id="travelRadio" 
+                  value="travel" 
+                  checked={this.state.expenseType === 'travel'}
+                  onChange={this.handleFromChange} />
+                <label class="form-check-label" for="travelRadio">Resa</label>
+              </div> 
+              <div className="form-check form-control-lg margin-bottom">
+                <input 
+                  type="radio" 
+                  className="form-check-input" 
+                  name="expenseType" 
+                  id="miscRadio" 
+                  value="misc" 
+                  checked={this.state.expenseType === 'misc'}
+                  onChange={this.handleFromChange} />
+                <label class="form-check-label" for="miscRadio">Övrigt</label>
+              </div>
+            </fieldset>
+            <button type="submit" class="btn btn-success btn-lg">Spara</button> 
           </form>
         </div>
       </div>
