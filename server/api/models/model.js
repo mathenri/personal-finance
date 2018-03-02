@@ -15,7 +15,7 @@ var ExpenseSchema = new Schema({
   type: {
     type: [{
       type: String,
-      enum: ['living', 'food', 'travel', 'misc']
+      enum: ['household', 'restaurant', 'bills', 'travel', 'savings', 'misc']
     }],
     default: ['misc']
   }
