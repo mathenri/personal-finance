@@ -25,7 +25,7 @@ class ExpenseForm extends Component {
   handleFormSubmit(event) {
     alert('Submitting: ' + this.state.expenseInputBoxValue + ', ' + this.state.expenseType);
 
-    fetch('http://localhost:5000/api/expenses', {
+    fetch('http://http://ec2-18-197-63-182.eu-central-1.compute.amazonaws.com:5000/api/expenses', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
@@ -35,7 +35,6 @@ class ExpenseForm extends Component {
           amount: this.state.expenseInputBoxValue,
           type: this.state.expenseType,
         })
-        .then(response => { return response.json();})
       });
 
     event.preventDefault();
@@ -65,7 +64,7 @@ class ExpenseForm extends Component {
                   value="household"
                   checked={this.state.expenseType === 'household'}
                   onChange={this.handleFromChange} />
-                <label class="form-check-label" for="householdRadio">Hushåll</label>
+                <label class="form-check-label" for="householdRadio">Mat/Hushåll</label>
               </div> 
               <div className="form-check form-control-lg">
                 <input 
