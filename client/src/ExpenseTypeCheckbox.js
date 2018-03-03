@@ -12,7 +12,7 @@ class ExpenseTypeCheckbox extends Component {
           value={this.props.radioButtonValue}
           checked={this.props.selectedExpenseType === this.props.radioButtonValue}
           onChange={this.props.handleFormChange} />
-        <label class="form-check-label" for={this.props.radioButtonValue + 'Radio'}>{this.props.label}</label>
+        <label className="form-check-label" htmlFor={this.props.radioButtonValue + 'Radio'}>{this.props.label}</label>
       </div>
     );
   }

@@ -96,7 +96,7 @@ class ExpenseForm extends Component {
                 label="Övrigt"
               /> 
             </fieldset>
-            <button type="submit" class="btn btn-success btn-lg">Spara</button> 
+            <button type="submit" className="btn btn-success btn-lg">Spara</button> 
           </form>
         </div>
       </div>
