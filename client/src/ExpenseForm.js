@@ -87,7 +87,7 @@ class ExpenseForm extends Component {
                   value="bills"
                   checked={this.state.expenseType === 'bills'}
                   onChange={this.handleFromChange} />
-                <label class="form-check-label" for="billsRadio">Räkningar</label>
+                <label class="form-check-label" for="billsRadio">Hyra/Räkningar</label>
               </div> 
               <div className="form-check form-control-lg">
                 <input 
@@ -100,17 +100,6 @@ class ExpenseForm extends Component {
                   onChange={this.handleFromChange} />
                 <label class="form-check-label" for="travelRadio">Resa</label>
               </div>
-              <div className="form-check form-control-lg">
-                <input 
-                  type="radio" 
-                  className="form-check-input" 
-                  name="expenseType" 
-                  id="savingsRadio" 
-                  value="savings" 
-                  checked={this.state.expenseType === 'savings'}
-                  onChange={this.handleFromChange} />
-                <label class="form-check-label" for="savingsRadio">Sparande</label>
-              </div> 
               <div className="form-check form-control-lg margin-bottom">
                 <input 
                   type="radio" 
