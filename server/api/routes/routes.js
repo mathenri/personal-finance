@@ -6,6 +6,9 @@ module.exports = function(app) {
     .get(controller.list_expenses)
     .post(controller.create_expense);
 
+  app.route('/api/expenses_sorted_limited')
+    .get(controller.list_expenses_sorted_by_latest_date_limit_5);
+
   app.route('/api/expenses/:expense_id')
     .get(controller.read_expense)
     .put(controller.update_expense)

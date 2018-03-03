@@ -9,8 +9,8 @@
     "react-scripts": "1.1.1"
   },
   "scripts": {
-    "start": "REACT_APP_API_URL=http://localhost:5000/api/expenses react-scripts start",
-    "build": "REACT_APP_API_URL=http://ec2-18-197-63-182.eu-central-1.compute.amazonaws.com:5000/api/expenses react-scripts build",
+    "start": "REACT_APP_API_URL=http://localhost:5000 react-scripts start",
+    "build": "REACT_APP_API_URL=http://ec2-18-197-63-182.eu-central-1.compute.amazonaws.com:5000 react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }

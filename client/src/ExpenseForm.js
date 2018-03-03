@@ -24,7 +24,7 @@ class ExpenseForm extends Component {
   }
 
   handleFormSubmit(event) {
-    fetch(process.env.REACT_APP_API_URL, 
+    fetch(`${process.env.REACT_APP_API_URL}/api/expenses`, 
           {
             method: 'POST',
             headers: {
