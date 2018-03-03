@@ -24,18 +24,27 @@ class ExpenseForm extends Component {
   }
 
   handleFormSubmit(event) {
-    alert('Submitting: ' + this.state.expenseInputBoxValue + ', ' + this.state.selectedExpenseType);
-
-    fetch(process.env.REACT_APP_API_URL, {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          amount: this.state.expenseInputBoxValue,
-          type: this.state.selectedExpenseType,
-        })
+    fetch(process.env.REACT_APP_API_URL, 
+          {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              amount: this.state.expenseInputBoxValue,
+              type: this.state.selectedExpenseType,
+            })
+          }
+      )
+      .then((response) => {
+        if (response.ok) {
+          alert(`Expense successfully submitted to server:
+            Cost: ${this.state.expenseInputBoxValue}, 
+            type: ${this.state.selectedExpenseType}`);
+        } else {
+          alert(`Expense could not be submitted: ${response.status}: ${response.statusText}\n${response.text()}`);
+        }
       });
 
     event.preventDefault();
