@@ -27,7 +27,8 @@ class App extends Component {
 
         <div className="row">
           <div className="col">
-            <h1>Privatekonomi</h1>
+            <h1 className="display-4">Privatekonomi</h1>
+            <hr/>
           </div>
         </div>
 
@@ -38,7 +39,7 @@ class App extends Component {
           <h2>Senast rapporterade kostnader</h2>
             <ul className="list-group">
               {this.state.expenses.map((item, i) => 
-                <li className="list-group-item" key={i}>{item.amount} kr - {item.type} - {item.created_date.slice(0,10)}</li>)}
+                <li className="list-group-item" key={i}><strong>{item.amount} kr</strong> - {item.type} - {item.created_date.slice(0,10)}</li>)}
             </ul>
           </div>
         </div>
