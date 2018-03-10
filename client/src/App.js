@@ -2,6 +2,23 @@ import React, { Component } from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import ExpenseForm from './ExpenseForm'
+import LatestExpensesList from './LatestExpensesList'
+
+const EXPENSE_TYPE_TRANSLATIONS = {
+  'household':'Mat/Hushåll',
+  'restaurant':'Restaurang',
+  'misc':'Övrigt',
+  'bills':'Räkningar',
+  'travel':'Resa'
+}
+
+const EXPENSE_TYPE_COLOR_CLASSES = {
+  'household':'text-primary',
+  'restaurant':'text-success',
+  'misc':'text-dark',
+  'bills':'text-danger',
+  'travel':'text-warning'
+}
 
 class App extends Component { 
   constructor() {
@@ -32,17 +49,13 @@ class App extends Component {
           </div>
         </div>
 
-        <ExpenseForm />
+        <ExpenseForm expenseTypeTranslations={EXPENSE_TYPE_TRANSLATIONS}/>
 
-        <div className="row margin-top">
-          <div className="col">
-          <h2>Senast rapporterade kostnader</h2>
-            <ul className="list-group">
-              {this.state.expenses.map((item, i) => 
-                <li className="list-group-item" key={i}><strong>{item.amount} kr</strong> - {item.type} - {item.created_date.slice(0,10)}</li>)}
-            </ul>
-          </div>
-        </div>
+        <LatestExpensesList 
+          expenses={this.state.expenses} 
+          expenseTypeTranslations={EXPENSE_TYPE_TRANSLATIONS}
+          expenseTypeColorClasses={EXPENSE_TYPE_COLOR_CLASSES}
+        />
 
       </div>
     );

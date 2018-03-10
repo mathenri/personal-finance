@@ -68,32 +68,42 @@ class ExpenseForm extends Component {
               <ExpenseTypeCheckbox 
                 handleFormChange={this.handleFormChange}
                 selectedExpenseType={this.state.selectedExpenseType}
+                expenseTypeTranslations={this.props.expenseTypeTranslations}
                 radioButtonValue="household"
                 label="Mat/Hushåll"
+                textColorClass="text-primary"
               />
               <ExpenseTypeCheckbox 
                 handleFormChange={this.handleFormChange}
                 selectedExpenseType={this.state.selectedExpenseType}
+                expenseTypeTranslations={this.props.expenseTypeTranslations}
                 radioButtonValue="restaurant"
                 label="Restaurang"
+                textColorClass="text-success"
               />
               <ExpenseTypeCheckbox 
                 handleFormChange={this.handleFormChange}
                 selectedExpenseType={this.state.selectedExpenseType}
+                expenseTypeTranslations={this.props.expenseTypeTranslations}
                 radioButtonValue="bills"
                 label="Hyra/Räkningar"
+                textColorClass="text-danger"
               /> 
               <ExpenseTypeCheckbox 
                 handleFormChange={this.handleFormChange}
                 selectedExpenseType={this.state.selectedExpenseType}
+                expenseTypeTranslations={this.props.expenseTypeTranslations}
                 radioButtonValue="travel"
                 label="Resa"
+                textColorClass="text-warning"
               /> 
               <ExpenseTypeCheckbox 
                 handleFormChange={this.handleFormChange}
                 selectedExpenseType={this.state.selectedExpenseType}
+                expenseTypeTranslations={this.props.expenseTypeTranslations}
                 radioButtonValue="misc"
                 label="Övrigt"
+                textColorClass="text-dark"
               /> 
             </fieldset>
             <button type="submit" className="btn btn-success btn-lg">Spara</button> 
