@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import ExpenseForm from './ExpenseForm'
-import LatestExpensesList from './LatestExpensesList'
+import ExpenseForm from './ExpenseForm';
+import LatestExpensesList from './LatestExpensesList';
+import {XYPlot, XAxis, YAxis, VerticalBarSeries} from 'react-vis';
 
 const EXPENSE_TYPE_TRANSLATIONS = {
   'household':'Mat/Hushåll',
@@ -42,12 +43,7 @@ class App extends Component {
     return (
       <div className="container">
 
-        <div className="row">
-          <div className="col">
-            <h1 className="display-4">Privatekonomi</h1>
-            <hr/>
-          </div>
-        </div>
+        <Header />
 
         <ExpenseForm expenseTypeTranslations={EXPENSE_TYPE_TRANSLATIONS}/>
 
