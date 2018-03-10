@@ -5,7 +5,6 @@ import ExpenseForm from './ExpenseForm';
 import LatestExpensesList from './LatestExpensesList';
 import Header from './Header';
 import ThisMonthExpensesBarChart from './ThisMonthExpensesBarChart';
-import {XYPlot, XAxis, YAxis, VerticalBarSeries} from 'react-vis';
 
 const EXPENSE_TYPE_TRANSLATIONS = {
   'household':'Mat/Hushåll',

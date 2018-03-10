@@ -28,19 +28,21 @@ class ThisMonthExpensesBarChart extends Component {
     });
 
     return (
-      
-        <div className="centered margin-top">
-          <XYPlot 
-            margin={{left: 100, bottom: 100}}
-            height={300} 
-            width={500} 
-            colorType="category" xType="ordinal">
-            <VerticalBarSeries data={formattedExpenses} />
-            <YAxis />
-            <XAxis tickLabelAngle={-90}/>
-          </XYPlot>
+      <div className="row">
+        <div className="col">
+          <div className="margin-top">
+            <XYPlot 
+              margin={{left: 80, bottom: 100}}
+              height={300} 
+              width={300} 
+              colorType="category" xType="ordinal">
+              <VerticalBarSeries data={formattedExpenses} />
+              <YAxis />
+              <XAxis tickLabelAngle={-90}/>
+            </XYPlot>
+          </div>
         </div>
-      
+      </div>
     );
   }
 }
