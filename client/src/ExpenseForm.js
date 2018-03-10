@@ -43,7 +43,7 @@ class ExpenseForm extends Component {
             Cost: ${this.state.expenseInputBoxValue}, 
             type: ${this.state.selectedExpenseType}`);
         } else {
-          alert(`Expense could not be submitted: ${response.status}: ${response.statusText}\n${response.text()}`);
+          alert(`Expense could not be submitted: ${response.status}: ${response.statusText}`);
         }
       });
 
