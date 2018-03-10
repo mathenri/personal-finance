@@ -3,6 +3,8 @@ import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import ExpenseForm from './ExpenseForm';
 import LatestExpensesList from './LatestExpensesList';
+import Header from './Header';
+import ThisMonthExpensesBarChart from './ThisMonthExpensesBarChart';
 import {XYPlot, XAxis, YAxis, VerticalBarSeries} from 'react-vis';
 
 const EXPENSE_TYPE_TRANSLATIONS = {
@@ -52,6 +54,8 @@ class App extends Component {
           expenseTypeTranslations={EXPENSE_TYPE_TRANSLATIONS}
           expenseTypeColorClasses={EXPENSE_TYPE_COLOR_CLASSES}
         />
+
+        <ThisMonthExpensesBarChart expenseTypeTranslations={EXPENSE_TYPE_TRANSLATIONS} />
 
       </div>
     );
