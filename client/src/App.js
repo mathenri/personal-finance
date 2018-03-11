@@ -10,7 +10,7 @@ const EXPENSE_TYPE_TRANSLATIONS = {
   'household':'Mat/Hushåll',
   'restaurant':'Restaurang',
   'misc':'Övrigt',
-  'bills':'Räkningar',
+  'bills':'Hyra/Räkningar',
   'travel':'Resa'
 }
 

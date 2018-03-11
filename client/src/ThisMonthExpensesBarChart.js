@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {XYPlot, XAxis, YAxis, VerticalBarSeries} from 'react-vis';
+import {XYPlot, XAxis, YAxis, VerticalBarSeries, VerticalGridLines, HorizontalGridLines} from 'react-vis';
 
 class ThisMonthExpensesBarChart extends Component {
   constructor() {
@@ -21,8 +21,9 @@ class ThisMonthExpensesBarChart extends Component {
     let formattedExpenses = [];
     let expenseIndex = 0;
     this.state.expense_records.forEach(function(item) {
-      if (typeof EXPENSE_TYPE_TRANSLATIONS[item._id] !== 'undefined') {
-        formattedExpenses.push({x: EXPENSE_TYPE_TRANSLATIONS[item._id], y: item.amount, color:expenseIndex});
+      const expenseTypeName = EXPENSE_TYPE_TRANSLATIONS[item._id];
+      if (typeof expenseTypeName !== 'undefined') {
+        formattedExpenses.push({x: expenseTypeName, y: item.amount, color:expenseIndex});
         expenseIndex++;
       }
     });
@@ -34,11 +35,14 @@ class ThisMonthExpensesBarChart extends Component {
             <XYPlot 
               margin={{left: 80, bottom: 100}}
               height={300} 
-              width={300} 
+              width={150} 
               colorType="category" xType="ordinal">
+              <VerticalGridLines />
+              <HorizontalGridLines />
               <VerticalBarSeries data={formattedExpenses} />
-              <YAxis />
-              <XAxis tickLabelAngle={-90}/>
+
+              <YAxis tickFormat={v => `${v} kr`}/>
+              <XAxis tickLabelAngle={-45}/>
             </XYPlot>
           </div>
         </div>
