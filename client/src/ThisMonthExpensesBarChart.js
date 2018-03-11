@@ -28,8 +28,8 @@ class ThisMonthExpensesBarChart extends Component {
     });
 
     return (
-      <div className="row">
-        <div className="col">
+      <div className="row justify-content-center">
+        <div className="col-auto">
           <div className="margin-top">
             <XYPlot 
               margin={{left: 80, bottom: 100}}
