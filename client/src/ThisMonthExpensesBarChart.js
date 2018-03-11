@@ -35,7 +35,7 @@ class ThisMonthExpensesBarChart extends Component {
             <XYPlot 
               margin={{left: 80, bottom: 100}}
               height={300} 
-              width={150} 
+              width={200} 
               colorType="category" xType="ordinal">
               <VerticalGridLines />
               <HorizontalGridLines />
