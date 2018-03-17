@@ -14,12 +14,12 @@ const EXPENSE_TYPE_TRANSLATIONS = {
   'travel':'Resa'
 }
 
-const EXPENSE_TYPE_COLOR_CLASSES = {
-  'household':'text-primary',
-  'restaurant':'text-success',
-  'misc':'text-dark',
-  'bills':'text-danger',
-  'travel':'text-warning'
+const EXPENSE_TYPE_COLORS = {
+  'household':'#007bff',
+  'restaurant':'#28a745',
+  'misc':'#343a40',
+  'bills':'#ffc107',
+  'travel':'#dc3545'
 }
 
 class App extends Component { 
@@ -46,15 +46,20 @@ class App extends Component {
 
         <Header />
 
-        <ExpenseForm expenseTypeTranslations={EXPENSE_TYPE_TRANSLATIONS}/>
+        <ExpenseForm 
+          expenseTypeTranslations={EXPENSE_TYPE_TRANSLATIONS}
+          expenseTypeColors={EXPENSE_TYPE_COLORS}
+        />
 
         <LatestExpensesList 
           expenses={this.state.expenses} 
           expenseTypeTranslations={EXPENSE_TYPE_TRANSLATIONS}
-          expenseTypeColorClasses={EXPENSE_TYPE_COLOR_CLASSES}
+          expenseTypeColors={EXPENSE_TYPE_COLORS}
         />
 
-        <ThisMonthExpensesBarChart expenseTypeTranslations={EXPENSE_TYPE_TRANSLATIONS} />
+        <ThisMonthExpensesBarChart expenseTypeTranslations={EXPENSE_TYPE_TRANSLATIONS}
+          expenseTypeColors={EXPENSE_TYPE_COLORS}
+        />
 
       </div>
     );

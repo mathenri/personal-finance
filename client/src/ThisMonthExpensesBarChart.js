@@ -16,15 +16,19 @@ class ThisMonthExpensesBarChart extends Component {
   }
 
   render() {
-    const EXPENSE_TYPE_TRANSLATIONS = this.props.expenseTypeTranslations
+    const EXPENSE_TYPE_TRANSLATIONS = this.props.expenseTypeTranslations;
+    const EXPENSE_TYPE_COLORS = this.props.expenseTypeColors;
 
     let formattedExpenses = [];
-    let expenseIndex = 0;
     this.state.expense_records.forEach(function(item) {
       const expenseTypeName = EXPENSE_TYPE_TRANSLATIONS[item._id];
+      const expenseTypeColor = EXPENSE_TYPE_COLORS[item._id];
       if (typeof expenseTypeName !== 'undefined') {
-        formattedExpenses.push({x: expenseTypeName, y: item.amount, color:expenseIndex});
-        expenseIndex++;
+        formattedExpenses.push({
+          x: expenseTypeName, 
+          y: item.amount, 
+          color: expenseTypeColor
+        });
       }
     });
 
@@ -36,13 +40,14 @@ class ThisMonthExpensesBarChart extends Component {
               margin={{left: 80, bottom: 100}}
               height={300} 
               width={200} 
-              colorType="category" xType="ordinal">
-              <VerticalGridLines />
-              <HorizontalGridLines />
-              <VerticalBarSeries data={formattedExpenses} />
+              colorType="literal" 
+              xType="ordinal">
+                <VerticalGridLines />
+                <HorizontalGridLines />
+                <VerticalBarSeries data={formattedExpenses} />
 
-              <YAxis tickFormat={v => `${v} kr`}/>
-              <XAxis tickLabelAngle={-45}/>
+                <YAxis tickFormat={v => `${v} kr`}/>
+                <XAxis tickLabelAngle={-45}/>
             </XYPlot>
           </div>
         </div>

@@ -71,7 +71,7 @@ class ExpenseForm extends Component {
                 expenseTypeTranslations={this.props.expenseTypeTranslations}
                 radioButtonValue="household"
                 label="Mat/Hushåll"
-                textColorClass="text-primary"
+                expenseTypeColors={this.props.expenseTypeColors}
               />
               <ExpenseTypeCheckbox 
                 handleFormChange={this.handleFormChange}
@@ -79,7 +79,7 @@ class ExpenseForm extends Component {
                 expenseTypeTranslations={this.props.expenseTypeTranslations}
                 radioButtonValue="restaurant"
                 label="Restaurang"
-                textColorClass="text-success"
+                expenseTypeColors={this.props.expenseTypeColors}
               />
               <ExpenseTypeCheckbox 
                 handleFormChange={this.handleFormChange}
@@ -87,7 +87,7 @@ class ExpenseForm extends Component {
                 expenseTypeTranslations={this.props.expenseTypeTranslations}
                 radioButtonValue="bills"
                 label="Hyra/Räkningar"
-                textColorClass="text-danger"
+                expenseTypeColors={this.props.expenseTypeColors}
               /> 
               <ExpenseTypeCheckbox 
                 handleFormChange={this.handleFormChange}
@@ -95,7 +95,7 @@ class ExpenseForm extends Component {
                 expenseTypeTranslations={this.props.expenseTypeTranslations}
                 radioButtonValue="travel"
                 label="Resa"
-                textColorClass="text-warning"
+                expenseTypeColors={this.props.expenseTypeColors}
               /> 
               <ExpenseTypeCheckbox 
                 handleFormChange={this.handleFormChange}
@@ -103,7 +103,7 @@ class ExpenseForm extends Component {
                 expenseTypeTranslations={this.props.expenseTypeTranslations}
                 radioButtonValue="misc"
                 label="Övrigt"
-                textColorClass="text-dark"
+                expenseTypeColors={this.props.expenseTypeColors}
               /> 
             </fieldset>
             <button type="submit" className="btn btn-success btn-lg">Spara</button> 

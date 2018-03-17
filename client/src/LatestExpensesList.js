@@ -11,7 +11,7 @@ class LatestExpensesList extends Component {
               <li 
                 className="list-group-item" 
                 key={i}>
-                  <strong>{item.amount} kr</strong> - <span className={this.props.expenseTypeColorClasses[item.type]}>{this.props.expenseTypeTranslations[item.type]}</span> - {item.created_date.slice(0,10)}
+                  <strong>{item.amount} kr</strong> - <span style={{color: this.props.expenseTypeColors[item.type]}}>{this.props.expenseTypeTranslations[item.type]}</span> - {item.created_date.slice(0,10)}
               </li>
             )}
           </ul>
