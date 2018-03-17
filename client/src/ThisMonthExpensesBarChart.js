@@ -37,7 +37,7 @@ class ThisMonthExpensesBarChart extends Component {
           x: expenseTypeName, 
           y: expenseAmount, 
           color: expenseTypeColor
-        });
+        }); 
     }
 
     return (
@@ -45,7 +45,7 @@ class ThisMonthExpensesBarChart extends Component {
         <div className="col-auto">
           <div className="margin-top">
             <XYPlot 
-              margin={{left: 80, bottom: 100}}
+              margin={{left: 80, bottom: 130}}
               height={300} 
               width={200} 
               colorType="literal" 
@@ -55,7 +55,7 @@ class ThisMonthExpensesBarChart extends Component {
                 <VerticalBarSeries data={formattedExpenses} />
 
                 <YAxis tickFormat={v => `${v} kr`}/>
-                <XAxis tickLabelAngle={-45}/>
+                <XAxis tickLabelAngle={-90}/>
             </XYPlot>
           </div>
         </div>
