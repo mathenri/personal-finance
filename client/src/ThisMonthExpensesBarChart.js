@@ -49,8 +49,8 @@ class ThisMonthExpensesBarChart extends Component {
           <div className="margin-top">
             <XYPlot 
               margin={{left: 80, bottom: 130}}
-              height={300} 
-              width={250} 
+              height={320} 
+              width={280} 
               colorType="literal" 
               xType="ordinal">
                 
