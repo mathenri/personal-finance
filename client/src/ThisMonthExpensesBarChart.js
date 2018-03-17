@@ -5,32 +5,40 @@ class ThisMonthExpensesBarChart extends Component {
   constructor() {
     super();
     this.state = {
-      expense_records: []
+      expenseRecords: []
     };
   }
 
   componentDidMount() {
     fetch(`${process.env.REACT_APP_API_URL}/api/expenses_sum_by_expense_type`)
       .then(reslut => reslut.json())
-      .then(expense_records => this.setState({expense_records: expense_records}));
+      .then(expenseRecords => this.setState({expenseRecords: expenseRecords}));
+  }
+
+  getAmountFromList(list, id) {
+    for (const item of list) {
+      if (item._id[0] === id) {
+        return item.amount;
+      }
+    }
+    return null;
   }
 
   render() {
-    const EXPENSE_TYPE_TRANSLATIONS = this.props.expenseTypeTranslations;
-    const EXPENSE_TYPE_COLORS = this.props.expenseTypeColors;
+    if (this.state.expenseRecords.length == 0) {
+      return <div/>
+    }
 
     let formattedExpenses = [];
-    this.state.expense_records.forEach(function(item) {
-      const expenseTypeName = EXPENSE_TYPE_TRANSLATIONS[item._id];
-      const expenseTypeColor = EXPENSE_TYPE_COLORS[item._id];
-      if (typeof expenseTypeName !== 'undefined') {
-        formattedExpenses.push({
+    for (const [expenseTypeId, expenseTypeName] of Object.entries(this.props.expenseTypeTranslations)) {
+      const expenseTypeColor = this.props.expenseTypeColors[expenseTypeId];
+      const expenseAmount = this.getAmountFromList(this.state.expenseRecords, expenseTypeId);
+      formattedExpenses.push({
           x: expenseTypeName, 
-          y: item.amount, 
+          y: expenseAmount, 
           color: expenseTypeColor
         });
-      }
-    });
+    }
 
     return (
       <div className="row justify-content-center">
