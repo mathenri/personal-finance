@@ -3,9 +3,8 @@ import React, {Component} from 'react';
 class LatestExpensesList extends Component {
   render() {
     return (
-      <div className="row margin-top">
+      <div className="row">
         <div className="col">
-        <h2>Senast rapporterade kostnader</h2>
           <ul className="list-group">
             {this.props.expenses.map((item, i) => 
               <li 

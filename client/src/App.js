@@ -52,12 +52,22 @@ class App extends Component {
           expenseTypeColors={EXPENSE_TYPE_COLORS}
         />
 
+        <div className="row margin-top">
+          <div className="col">
+            <h2>Senast rapporterade kostnader</h2>
+          </div>
+        </div>
         <LatestExpensesList 
           expenses={this.state.expenses} 
           expenseTypeTranslations={EXPENSE_TYPE_TRANSLATIONS}
           expenseTypeColors={EXPENSE_TYPE_COLORS}
         />
 
+        <div className="row margin-top">
+          <div className="col">
+            <h2>Kostnader denna månaden</h2>
+          </div>
+        </div>
         <ThisMonthExpensesBarChart expenseTypeTranslations={EXPENSE_TYPE_TRANSLATIONS}
           expenseTypeColors={EXPENSE_TYPE_COLORS}
         />

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {XYPlot, XAxis, YAxis, VerticalBarSeries, VerticalGridLines, HorizontalGridLines} from 'react-vis';
+import {XYPlot, XAxis, YAxis, VerticalBarSeries, HorizontalGridLines} from 'react-vis';
 
 class ThisMonthExpensesBarChart extends Component {
   constructor() {
@@ -46,24 +46,22 @@ class ThisMonthExpensesBarChart extends Component {
     return (
       <div className="row justify-content-center">
         <div className="col-auto">
-          <div className="margin-top">
-            <XYPlot 
-              margin={{left: 80, bottom: 130}}
-              height={320} 
-              width={280} 
-              colorType="literal" 
-              xType="ordinal">
-                
-                <HorizontalGridLines />
-                <VerticalBarSeries data={formattedExpenses} />
+          <XYPlot 
+            margin={{left: 80, bottom: 130}}
+            height={320} 
+            width={280} 
+            colorType="literal" 
+            xType="ordinal">
+              
+              <HorizontalGridLines />
+              <VerticalBarSeries data={formattedExpenses} />
 
-                <YAxis 
-                  tickTotal={2}
-                  tickFormat={v => `${v} kr`}
-                />
-                <XAxis tickLabelAngle={-90}/>
-            </XYPlot>
-          </div>
+              <YAxis 
+                tickTotal={2}
+                tickFormat={v => `${v} kr`}
+              />
+              <XAxis tickLabelAngle={-90}/>
+          </XYPlot>
         </div>
       </div>
     );
