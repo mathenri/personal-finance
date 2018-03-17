@@ -10,7 +10,10 @@ class ThisMonthExpensesBarChart extends Component {
   }
 
   componentDidMount() {
-    fetch(`${process.env.REACT_APP_API_URL}/api/expenses_sum_by_expense_type`)
+    const thisDate = new Date();
+    const thisYearAndMonthStr = thisDate.toISOString().slice(0, 7);
+    const firstDayOfThisMonth = thisYearAndMonthStr + '-01';
+    fetch(`${process.env.REACT_APP_API_URL}/api/expenses_sum_by_expense_type?since=${firstDayOfThisMonth}`)
       .then(reslut => reslut.json())
       .then(expenseRecords => this.setState({expenseRecords: expenseRecords}));
   }
@@ -25,7 +28,7 @@ class ThisMonthExpensesBarChart extends Component {
   }
 
   render() {
-    if (this.state.expenseRecords.length == 0) {
+    if (this.state.expenseRecords.length === 0) {
       return <div/>
     }
 
