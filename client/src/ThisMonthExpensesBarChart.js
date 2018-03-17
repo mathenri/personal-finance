@@ -50,14 +50,17 @@ class ThisMonthExpensesBarChart extends Component {
             <XYPlot 
               margin={{left: 80, bottom: 130}}
               height={300} 
-              width={200} 
+              width={250} 
               colorType="literal" 
               xType="ordinal">
-                <VerticalGridLines />
+                
                 <HorizontalGridLines />
                 <VerticalBarSeries data={formattedExpenses} />
 
-                <YAxis tickFormat={v => `${v} kr`}/>
+                <YAxis 
+                  tickTotal={2}
+                  tickFormat={v => `${v} kr`}
+                />
                 <XAxis tickLabelAngle={-90}/>
             </XYPlot>
           </div>

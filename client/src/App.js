@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
+import '../node_modules/react-vis/dist/style.css';
 import './App.css';
 import ExpenseForm from './ExpenseForm';
 import LatestExpensesList from './LatestExpensesList';
