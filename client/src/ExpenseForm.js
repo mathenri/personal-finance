@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import ExpenseTypeCheckbox from './ExpenseTypeCheckbox';
+import ThisMonthExpensesBarChart from './ThisMonthExpensesBarChart';
+import ExpenseFormSubmitAlertSuccess from './ExpenseFormSubmitAlertSuccess';
+import ExpenseFormSubmitAlertFail from './ExpenseFormSubmitAlertFail';
 
 class ExpenseForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       expenseInputBoxValue: null,
-      selectedExpenseType: 'misc'
+      selectedExpenseType: 'misc',
+      showFormSubmitAlertSuccess: false,
+      showFormSubmitAlertFailed: false,
+      submitFailedErrorMsg: ''
     };
 
     this.handleFormChange = this.handleFormChange.bind(this);
@@ -39,11 +45,19 @@ class ExpenseForm extends Component {
       )
       .then((response) => {
         if (response.ok) {
-          alert(`Expense successfully submitted to server:
-            Cost: ${this.state.expenseInputBoxValue}, 
-            type: ${this.state.selectedExpenseType}`);
+          this.setState({ 
+            showFormSubmitAlertSuccess: true,
+            showFormSubmitAlertFailed: false,
+            submitFailedErrorMsg: ''
+          });
+          window.scrollTo(0, 0);
         } else {
-          alert(`Expense could not be submitted: ${response.status}: ${response.statusText}`);
+          this.setState({
+            submitFailedErrorMsg: `${response.status}: ${response.statusText}`,
+            showFormSubmitAlertFailed: true,
+            showFormSubmitAlertSuccess: false
+          });
+          window.scrollTo(0, 0);
         }
       });
 
@@ -54,6 +68,16 @@ class ExpenseForm extends Component {
     return (
       <div className="row">
         <div className="col text-center">
+          {this.state.showFormSubmitAlertSuccess && 
+            <ExpenseFormSubmitAlertSuccess 
+              amount={this.state.expenseInputBoxValue} 
+              expenseType={this.props.expenseTypeTranslations[this.state.selectedExpenseType]}
+            />
+          }
+
+          {this.state.showFormSubmitAlertFailed && 
+            <ExpenseFormSubmitAlertFail errorMessage={this.state.submitFailedErrorMsg} />}
+
           <form onSubmit={this.handleFormSubmit}>
             <div className="form-group">
               <input 
