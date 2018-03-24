@@ -23,6 +23,31 @@ exports.list_expenses_sorted_by_latest_date_limit_5 = function(req, res) {
     });
 };
 
+exports.expenses_sum = function(req, res) {
+  Expense.aggregate(
+    [
+      {
+        $match: {
+          "created_date": { 
+            $gte : new Date(req.query.from),
+            $lt: new Date(req.query.to)
+          }
+        }
+      },
+      {
+        $group: {
+          _id: '',
+          amount: { $sum: '$amount' }
+        }
+      }
+    ], function(err, expenses) {
+      if (err)
+        res.send(err);
+      res.json(expenses)
+    }
+  );
+}
+
 exports.list_expenses_sum_by_expense_type = function(req, res) {
   Expense.aggregate(
     [

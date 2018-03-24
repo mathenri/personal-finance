@@ -9,6 +9,9 @@ module.exports = function(app) {
   app.route('/api/expenses_sorted_limited')
     .get(controller.list_expenses_sorted_by_latest_date_limit_5);
 
+  app.route('/api/expenses_sum')
+    .get(controller.expenses_sum);
+
   app.route('/api/expenses_sum_by_expense_type')
     .get(controller.list_expenses_sum_by_expense_type);
 
