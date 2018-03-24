@@ -5,8 +5,7 @@ class ThisMonthExpensesBarChart extends Component {
   constructor() {
     super();
     this.state = {
-      expenseRecords: [],
-      expenseSum: 0
+      expenseRecords: []
     };
   }
 
@@ -17,9 +16,6 @@ class ThisMonthExpensesBarChart extends Component {
     fetch(`${process.env.REACT_APP_API_URL}/api/expenses_sum_by_expense_type?since=${firstDayOfThisMonth}`)
       .then(reslut => reslut.json())
       .then(expenseRecords => this.setState({expenseRecords: expenseRecords}));
-    fetch(`${process.env.REACT_APP_API_URL}/api/expenses_sum?from="2018-03-01&to=2018-03-31"`)
-      .then(reslut => reslut.json())
-      .then(expenseSum => this.setState({expenseSum: expenseSum[0]['amount']}));
   }
 
   getAmountFromList(list, id) {
@@ -67,7 +63,6 @@ class ThisMonthExpensesBarChart extends Component {
               />
               <XAxis tickLabelAngle={-90}/>
           </XYPlot>
-          <h3>Totalt: {this.state.expenseSum} kr</h3>
         </div>
       </div>
     );

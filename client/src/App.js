@@ -6,6 +6,8 @@ import ExpenseForm from './ExpenseForm';
 import LatestExpensesList from './LatestExpensesList';
 import Header from './Header';
 import ThisMonthExpensesBarChart from './ThisMonthExpensesBarChart';
+import ThisMonthExpensesTotal from './ThisMonthExpensesTotal';
+ThisMonthExpensesTotal
 
 const EXPENSE_TYPE_TRANSLATIONS = {
   'household':'Mat/Hushåll',
@@ -71,6 +73,13 @@ class App extends Component {
         <ThisMonthExpensesBarChart expenseTypeTranslations={EXPENSE_TYPE_TRANSLATIONS}
           expenseTypeColors={EXPENSE_TYPE_COLORS}
         />
+
+        <div className="row margin-top">
+          <div className="col">
+            <h2>Kostnader denna månaden totalt</h2>
+          </div>
+        </div>
+        <ThisMonthExpensesTotal />
 
       </div>
     );
