@@ -9,9 +9,18 @@ class ThisMonthExpensesTotal extends Component {
   }
 
   componentDidMount() {
-    fetch(`${process.env.REACT_APP_API_URL}/api/expenses_sum?from="2018-03-01&to=2018-03-31"`)
+    const date = new Date();
+    const firstDay = new Date(Date.UTC(date.getFullYear(), date.getMonth(), 1, 0, 0, 0));
+    const lastDay = new Date(Date.UTC(date.getFullYear(), date.getMonth() + 1, 0, 0, 0, 0));
+    const firstDayString = firstDay.toISOString().slice(0, 10);
+    const lastDayString = lastDay.toISOString().slice(0, 10);
+    fetch(`${process.env.REACT_APP_API_URL}/api/expenses_sum?from=${firstDayString}&to=${lastDayString}`)
       .then(reslut => reslut.json())
-      .then(expenseSum => this.setState({expenseSum: expenseSum[0]['amount']}));
+      .then((expenseSum) => {
+        if (expenseSum.length !== 0) {
+          this.setState({expenseSum: expenseSum[0]['amount']});
+        }
+      });
   }
 
   render() {

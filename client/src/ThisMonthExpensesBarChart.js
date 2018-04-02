@@ -10,10 +10,10 @@ class ThisMonthExpensesBarChart extends Component {
   }
 
   componentDidMount() {
-    const thisDate = new Date();
-    const thisYearAndMonthStr = thisDate.toISOString().slice(0, 7);
-    const firstDayOfThisMonth = thisYearAndMonthStr + '-01';
-    fetch(`${process.env.REACT_APP_API_URL}/api/expenses_sum_by_expense_type?since=${firstDayOfThisMonth}`)
+    const date = new Date();
+    const firstDay = new Date(Date.UTC(date.getFullYear(), date.getMonth(), 1, 0, 0, 0));
+    const firstDayString = firstDay.toISOString().slice(0, 10);
+    fetch(`${process.env.REACT_APP_API_URL}/api/expenses_sum_by_expense_type?since=${firstDayString}`)
       .then(reslut => reslut.json())
       .then(expenseRecords => this.setState({expenseRecords: expenseRecords}));
   }
