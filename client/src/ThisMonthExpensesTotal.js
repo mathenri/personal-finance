@@ -74,8 +74,8 @@ class ThisMonthExpensesTotal extends Component {
           <h4>Denna månaden: <span className="badge badge-primary">{this.state.expensesThisMonth} kr</span></h4>
           <h4>Förra månaden: <span className="badge badge-secondary">{this.state.expensesLastMonth} kr</span></h4>
           <XYPlot 
-            height={300} 
-            width={300} 
+            height={320} 
+            width={280} 
             margin={{
               left: 60,
               bottom: 50
@@ -83,7 +83,6 @@ class ThisMonthExpensesTotal extends Component {
             xType="ordinal"
             stroke="#428bca"
           >
-            <VerticalGridLines />
             <HorizontalGridLines />
             <XAxis 
               tickTotal={expensesPerMonthFormatted.length}
@@ -91,6 +90,7 @@ class ThisMonthExpensesTotal extends Component {
             />
             <YAxis
               tickFormat={v => `${v} kr`}
+              hideLine
             />
             <LineSeries data={expensesPerMonthFormatted} />
           </XYPlot>

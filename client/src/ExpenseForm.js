@@ -59,7 +59,6 @@ class ExpenseForm extends Component {
           window.scrollTo(0, 0);
         }
       });
-
     event.preventDefault();
   }
 
