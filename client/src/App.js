@@ -67,19 +67,19 @@ class App extends Component {
 
         <div className="row margin-top">
           <div className="col">
+            <h2>Total kostnad</h2>
+          </div>
+        </div>
+        <ThisMonthExpensesTotal />
+
+        <div className="row margin-top">
+          <div className="col">
             <h2>Kostnader denna månaden</h2>
           </div>
         </div>
         <ThisMonthExpensesBarChart expenseTypeTranslations={EXPENSE_TYPE_TRANSLATIONS}
           expenseTypeColors={EXPENSE_TYPE_COLORS}
         />
-
-        <div className="row margin-top">
-          <div className="col">
-            <h2>Kostnader denna månaden totalt</h2>
-          </div>
-        </div>
-        <ThisMonthExpensesTotal />
 
       </div>
     );
