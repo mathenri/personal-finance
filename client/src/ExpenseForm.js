@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ExpenseTypeCheckbox from './ExpenseTypeCheckbox';
-import ThisMonthExpensesBarChart from './ThisMonthExpensesBarChart';
 import ExpenseFormSubmitAlertSuccess from './ExpenseFormSubmitAlertSuccess';
 import ExpenseFormSubmitAlertFail from './ExpenseFormSubmitAlertFail';
 

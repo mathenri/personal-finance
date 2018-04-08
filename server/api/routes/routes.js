@@ -15,6 +15,9 @@ module.exports = function(app) {
   app.route('/api/expenses_sum_by_expense_type')
     .get(controller.list_expenses_sum_by_expense_type);
 
+  app.route('/api/expenses_sum_per_month')
+    .get(controller.expenses_sum_per_month);
+
   app.route('/api/expenses/:expense_id')
     .get(controller.read_expense)
     .put(controller.update_expense)

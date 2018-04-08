@@ -7,7 +7,6 @@ import LatestExpensesList from './LatestExpensesList';
 import Header from './Header';
 import ThisMonthExpensesBarChart from './ThisMonthExpensesBarChart';
 import ThisMonthExpensesTotal from './ThisMonthExpensesTotal';
-ThisMonthExpensesTotal
 
 const EXPENSE_TYPE_TRANSLATIONS = {
   'household':'Mat/Hushåll',

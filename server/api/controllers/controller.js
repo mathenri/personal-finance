@@ -23,6 +23,38 @@ exports.list_expenses_sorted_by_latest_date_limit_5 = function(req, res) {
     });
 };
 
+exports.expenses_sum_per_month = function(req, res) {
+  Expense.aggregate(
+    [ 
+      {
+        "$project": {
+          "amount": 1,
+          "month": {
+            "$month": "$created_date"
+          } 
+        }
+      }, 
+      {
+        "$group": {
+          "_id": "$month", 
+          "total_amount": { 
+            "$sum": "$amount"
+          } 
+        }
+      },
+      {
+        "$sort": {
+          "_id": 1 
+        }
+      } 
+    ], function(err, expenses) {
+      if (err)
+        res.send(err);
+      res.json(expenses)
+    }
+  );
+}
+
 exports.expenses_sum = function(req, res) {
   Expense.aggregate(
     [
