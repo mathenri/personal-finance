@@ -5,7 +5,13 @@ var mongoose = require('mongoose'),
 
 
 exports.list_expenses = function(req, res) {
-  Expense.find({}, function(err, expenses) {
+  Expense.find(
+    {
+      'created_date': {
+        $gte : new Date(req.query.from),
+        $lt: new Date(req.query.to)
+      }
+    }, function(err, expenses) {
     if (err)
       res.status(400).send(err);
     res.status(200).json(expenses);
@@ -49,8 +55,8 @@ exports.expenses_sum_per_month = function(req, res) {
       } 
     ], function(err, expenses) {
       if (err)
-        res.send(err);
-      res.json(expenses)
+        res.status(400).send(err);
+      res.status(200).json(expenses)
     }
   );
 }
@@ -74,8 +80,8 @@ exports.expenses_sum = function(req, res) {
       }
     ], function(err, expenses) {
       if (err)
-        res.send(err);
-      res.json(expenses)
+        res.status(400).send(err);
+      res.status(200).json(expenses)
     }
   );
 }
@@ -100,8 +106,8 @@ exports.list_expenses_sum_by_expense_type = function(req, res) {
       }
     ], function(err, expenses) {
       if (err)
-        res.send(err);
-      res.json(expenses)
+        res.status(400).send(err);
+      res.status(200).json(expenses)
     }
   );
 }
