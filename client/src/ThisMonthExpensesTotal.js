@@ -137,9 +137,6 @@ class ThisMonthExpensesTotal extends Component {
       }
     }
 
-    console.log(expenseSumOverTimeThisMonthList);
-    console.log(expenseSumOverTimeLastMonthList);
-
     return (
       <div className="row justify-content-center">
         <div className="col-auto" align="center">
