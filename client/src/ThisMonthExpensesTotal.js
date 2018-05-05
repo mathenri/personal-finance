@@ -94,6 +94,7 @@ class ThisMonthExpensesTotal extends Component {
     this.state.expensesPerMonth.forEach((item) => {
       expensesPerMonthFormatted.push({x:MONTHS[item._id], y:item.total_amount});
     });
+    expensesPerMonthFormatted.pop(); // remove last month
 
     // format expenses sum over time last month to x,y-form
     let expenseSumOverTimeLastMonthDict = {};
@@ -107,7 +108,7 @@ class ThisMonthExpensesTotal extends Component {
     let expenseSumOverTimeLastMonthList = [];
     let i;
     let lastTotalExpense = 0;
-    for (i = 0; i < 31; i++) { 
+    for (i = 0; i <= 32; i++) { 
       if (i in expenseSumOverTimeLastMonthDict) {
         expenseSumOverTimeLastMonthList.push({x: i, y: expenseSumOverTimeLastMonthDict[i]});
         lastTotalExpense = expenseSumOverTimeLastMonthDict[i];
